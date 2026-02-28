@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <h1 class="app-title">
+          <span class="title-icon">✓</span> Todo
+        </h1>
+      </header>
+
+      <main class="app-main">
+        <!-- Add task form -->
+        <form class="add-form" id="add-form" autocomplete="off">
+          <input
+            type="text"
+            id="task-input"
+            class="task-input"
+            placeholder="What needs to be done?"
+            maxlength="200"
+            aria-label="New task text"
+          />
+          <button type="submit" class="btn btn-add" aria-label="Add task">
+            Add
+          </button>
+        </form>
+
+        <!-- Task list -->
+        <section class="task-section" aria-label="Task list">
+          <ul id="todo-list" class="todo-list" role="list"></ul>
+          <p class="empty-state" id="empty-state" hidden>
+            Nothing here — add a task above!
+          </p>
+        </section>
+
+        <!-- Footer: filter + counter -->
+        <footer class="app-footer" id="app-footer">
+          <span class="task-count" id="task-count">0 tasks left</span>
+
+          <nav class="filter-nav" aria-label="Filter tasks">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+          </nav>
+
+          <button class="btn btn-clear" id="clear-completed" title="Remove all completed tasks">
+            Clear completed
+          </button>
+        </footer>
+      </main>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
