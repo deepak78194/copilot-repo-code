@@ -1,0 +1,141 @@
+# ============================================================
+# Root .gitignore
+# .github/ (agents, instructions, copilot config) is NEVER ignored
+# ============================================================
+
+# ---------------------------
+# Node / JavaScript / TypeScript
+# ---------------------------
+node_modules/
+dist/
+.next/
+.nuxt/
+.output/
+.cache/
+.parcel-cache/
+.turbo/
+.vercel/
+.netlify/
+coverage/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# ---------------------------
+# Java / JVM
+# ---------------------------
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+out/
+build/
+target/
+*.iml
+
+# ---------------------------
+# Gradle
+# ---------------------------
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+gradle-app.setting
+!**/src/main/**/gradle-wrapper.jar
+local.properties
+
+# ---------------------------
+# Maven
+# ---------------------------
+.mvn/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+
+# ---------------------------
+# IntelliJ IDEA
+# ---------------------------
+.idea/
+!.idea/.gitignore
+*.iws
+*.ipr
+*.iml
+.idea_modules/
+
+# ---------------------------
+# VS Code (keep workspace settings if desired)
+# ---------------------------
+.vscode/launch.json
+.vscode/tasks.json
+.vscode/*.code-workspace
+
+# ---------------------------
+# OS-generated files
+# ---------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ---------------------------
+# Logs & runtime artefacts
+# ---------------------------
+logs/
+*.log
+*.log.*
+*.pid
+*.seed
+*.pid.lock
+pids/
+lib-cov/
+.nyc_output/
+
+# ---------------------------
+# Environment / secrets
+# ---------------------------
+.env
+.env.*
+!.env.example
+!.env.template
+*.pem
+*.key
+*.p12
+*.jks
+
+# ---------------------------
+# Bun
+# ---------------------------
+.bun/
+bun.lockb
+
+# ---------------------------
+# Temporary / editor swap files
+# ---------------------------
+*.swp
+*.swo
+*~
+*.tmp
+*.bak
+*.orig
+
+# ============================================================
+# EXPLICIT INCLUSIONS (override any accidental ignore above)
+# ============================================================
+!.github/
+!.github/**
+!.copilot/
+!.copilot/**
