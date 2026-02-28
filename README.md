@@ -1,120 +1,163 @@
 # Copilot Experimentation Lab
 
-This repository is a structured learning and experimentation lab for GitHub Copilot — focused on custom agents, agent orchestration, prompt engineering, context engineering, and deterministic AI-assisted workflows.
+A structured lab for designing, evaluating, and improving GitHub Copilot agent definitions,
+prompt templates, and orchestration patterns for production Java and TypeScript backends.
+
+> **This is not a shipped application.** All generated code is for evaluation purposes.
 
 ---
 
-## Purpose
+## Quick Start
 
-Use this repository to:
-
-- Design and evaluate **custom agents** with well-defined roles
-- Experiment with **agent orchestration** (planner → implementer → reviewer)
-- Engineer high-quality **prompts** and **context** for Copilot
-- Automate **TDD workflows** with Java (Micronaut, Spring Boot) and JUnit 5
-- Design and test **REST APIs** with deterministic, reviewable outcomes
-- Practice **PostgreSQL migration scenarios** in a safe sandbox
+1. Read `.github/copilot-instructions.md` — global rules applied to every Copilot interaction.
+2. Explore `.copilot/agents/` to understand the six available agent roles.
+3. Pick a prompt from `.copilot/prompt-library/` that matches your task.
+4. Run the Orchestrator workflow: **Plan → Implement → Review**.
+5. Save outputs in `experiments/` and record what you learned.
 
 ---
 
 ## Repository Structure
 
 ```
+.github/
+  copilot-instructions.md  # Primary Copilot instructions (auto-applied by GitHub)
+
 .copilot/
-  instructions.md          # Global Copilot behavior instructions
+  instructions.md          # Extended global instructions and conventions
   agents/                  # Agent role definitions
-    planner.agent.md
-    implementer.agent.md
-    reviewer.agent.md
-    orchestrator.agent.md
-  skills/                  # Reusable skill definitions
-    java.skill.md
-    testing.skill.md
-    rest-api.skill.md
-  prompt-library/          # Reusable prompt templates
+    orchestrator.agent.md  # Sequences phases; manages handoffs
+    planner.agent.md       # Decomposes requirements into tasks
+    implementer.agent.md   # Writes production code from a plan
+    reviewer.agent.md      # Reviews code for correctness and security
+    debug.agent.md         # Root-cause analysis and targeted bug fixes  ← NEW
+    security.agent.md      # OWASP-aligned security audit                ← NEW
+  skills/                  # Modular, reusable domain knowledge
+    java.skill.md          # Java 21, Spring Boot 3, Micronaut 4
+    rest-api.skill.md      # REST design rules and status codes
+    testing.skill.md       # JUnit 5, AssertJ, Mockito, Testcontainers
+    typescript.skill.md    # TypeScript 5, Hono, Zod, Drizzle, Vitest    ← NEW
+    security.skill.md      # OWASP Top 10, secure-coding patterns         ← NEW
+    observability.skill.md # Structured logging, OTel tracing, Micrometer ← NEW
+  prompt-library/          # Ready-to-use prompt templates
     tdd-cycle.prompt.md
     rest-endpoint.prompt.md
     db-migration.prompt.md
+    bug-fix.prompt.md       # Debug → Fix → Review workflow               ← NEW
+    refactor.prompt.md      # Safe, test-protected refactoring workflow   ← NEW
+    security-review.prompt.md # OWASP-aligned security audit              ← NEW
 
-playground/                # Example projects for hands-on experimentation
-experiments/               # Agent evaluation and determinism testing scenarios
+playground/
+  user-service/            # End-to-end Spring Boot example (CRUD + tests) ← NEW
+
+experiments/
+  agent-consistency/       # Measured consistency experiment with analysis  ← NEW
 ```
 
 ---
 
-## How Agents Are Structured
+## Agents
 
-Each agent is defined in `.copilot/agents/` as a Markdown file that specifies:
+| Agent | File | Responsibility |
+|-------|------|----------------|
+| Orchestrator | `orchestrator.agent.md` | Sequences phases; enforces workflow rules |
+| Planner | `planner.agent.md` | Decomposes requirements into tasks with acceptance criteria |
+| Implementer | `implementer.agent.md` | Writes production code from a plan |
+| Reviewer | `reviewer.agent.md` | Reviews for correctness, style, and security |
+| Debugger | `debug.agent.md` | Root-cause analysis → minimal failing test → targeted fix |
+| Security | `security.agent.md` | OWASP Top 10 audit with exploit scenarios and remediation |
 
-- **Role** — what the agent is responsible for
-- **Inputs** — what context it needs
-- **Outputs** — what it produces
-- **Constraints** — what it must not do
-- **Prompt template** — the structured instruction sent to Copilot
-
-| Agent | Responsibility |
-|---|---|
-| `planner` | Breaks requirements into tasks and acceptance criteria |
-| `implementer` | Writes production code from a plan |
-| `reviewer` | Reviews code for correctness, style, and security |
-| `orchestrator` | Sequences agents and manages handoffs |
+Each agent definition includes:
+- **Role** and **Inputs/Outputs**
+- **Constraints** (what it must NOT do)
+- **Prompt template** (copy-paste ready)
+- **Concrete example**
 
 ---
 
-## How Skills Are Reused
+## Skills
 
-Skills in `.copilot/skills/` are modular knowledge files that any agent can reference. They encode domain-specific conventions, patterns, and constraints.
+Skills are modular knowledge files that agents reference. They encode conventions, patterns, and
+constraints for a specific domain.
 
-| Skill | Purpose |
-|---|---|
-| `java` | Java coding conventions, Micronaut/Spring Boot patterns |
-| `testing` | JUnit 5 patterns, TDD cycle, test naming |
-| `rest-api` | REST design rules, status codes, request/response shapes |
-
-An agent references a skill by including it in its prompt context.
+| Skill | Language | Key Topics |
+|-------|----------|-----------|
+| `java` | Java 21 | Records, sealed types, Spring Boot 3, Micronaut 4, JPA |
+| `rest-api` | — | HTTP verbs, status codes, URL design, pagination, versioning |
+| `testing` | Java | JUnit 5, AssertJ, Mockito, Testcontainers, TDD cycle |
+| `typescript` | TypeScript 5 | Hono, Zod, Drizzle ORM, Vitest, strict mode |
+| `security` | Java / TS | OWASP Top 10, injection, auth, crypto, dependency scanning |
+| `observability` | Java | Structured JSON logs, OTel tracing, Micrometer metrics, health endpoints |
 
 ---
 
 ## How Orchestration Works
 
-The `orchestrator` agent drives a deterministic three-phase workflow:
-
 ```
-1. Plan   → planner.agent receives a requirement and produces a task list
-2. Build  → implementer.agent receives the task list and writes code
-3. Review → reviewer.agent receives the code and produces a review report
+Requirement
+    │
+    ▼
+┌─────────┐   task list    ┌─────────────┐   code     ┌──────────┐
+│ Planner │ ─────────────► │ Implementer │ ─────────► │ Reviewer │
+└─────────┘                └─────────────┘            └──────────┘
+                                  ▲                        │
+                                  │    CHANGES REQUIRED    │
+                                  └────────────────────────┘
+                                           │ APPROVED
+                                           ▼
+                                        COMPLETE
 ```
 
-Each phase produces a documented output that feeds the next phase, making the workflow auditable and reproducible.
+A task is only `COMPLETE` when the Reviewer returns `APPROVED`. If the Reviewer returns
+`CHANGES REQUIRED` more than twice for the same task, the Orchestrator escalates to the user.
 
 ---
 
 ## Prompt Library
 
-The `.copilot/prompt-library/` folder contains ready-to-use prompt templates for common scenarios:
-
-- `tdd-cycle.prompt.md` — Red → Green → Refactor cycle for a Java feature
-- `rest-endpoint.prompt.md` — Design, implement, and test a REST endpoint
-- `db-migration.prompt.md` — Write and validate a PostgreSQL migration
-
----
-
-## Best Practices for Copilot Experimentation
-
-1. **Be explicit about roles.** Each agent should have a single, clear responsibility.
-2. **Separate planning from implementation.** Never let the implementer define requirements.
-3. **Use constraints.** Tell agents what they must NOT do — this reduces hallucination.
-4. **Prefer deterministic workflows.** Plan → Implement → Review produces auditable results.
-5. **Write tests first.** TDD gives Copilot a concrete target and validates its output.
-6. **Version your prompts.** Treat prompt templates like code — track changes and evaluate regressions.
-7. **Keep context tight.** Pass only the context each agent needs. Noise degrades output quality.
-8. **Evaluate outputs.** Use the `experiments/` folder to measure consistency across runs.
+| Template | Workflow | When to Use |
+|----------|---------|-------------|
+| `rest-endpoint.prompt.md` | Plan → Implement → Review | Add a new REST endpoint end-to-end |
+| `tdd-cycle.prompt.md` | Red → Green → Refactor | Implement a method using TDD |
+| `db-migration.prompt.md` | Plan → Implement → Review | Add or modify database tables |
+| `bug-fix.prompt.md` | Debug → Fix → Review | Investigate and fix a defect |
+| `refactor.prompt.md` | Plan → Implement → Review | Safely restructure existing code |
+| `security-review.prompt.md` | Audit → Remediate → Re-audit | OWASP security scan before merge |
 
 ---
 
-## Getting Started
+## Playground: `user-service`
 
-1. Read `.copilot/instructions.md` to understand global Copilot behavior for this repo.
-2. Pick a scenario from `playground/` or design your own.
-3. Run the orchestrator workflow: plan → implement → review.
-4. Log results in `experiments/` for later analysis.
+A complete, production-quality Spring Boot 3 + PostgreSQL CRUD service built using this lab's
+workflow. Use it as a reference implementation.
+
+**Endpoints:** `GET/POST /api/v1/users`, `GET/PATCH/DELETE /api/v1/users/{id}`  
+**Stack:** Java 21 · Spring Boot 3 · JPA + Flyway · PostgreSQL · JUnit 5 + Testcontainers  
+**Patterns:** Constructor injection · DTOs · Structured errors · `@Transactional` service layer
+
+See `playground/user-service/README.md` for the full walkthrough.
+
+---
+
+## Experiments: `agent-consistency`
+
+A controlled experiment measuring how consistently the agent pipeline produces code that meets the
+same acceptance criteria across multiple independent runs.
+
+**Finding:** The Reviewer agent is essential — both runs had at least one issue the Implementer
+introduced; both were caught and corrected within the session.
+
+See `experiments/agent-consistency/analysis.md` for the full results and recommendations.
+
+---
+
+## Best Practices
+
+1. **Be explicit about roles.** Each agent has a single responsibility.
+2. **Encode conventions in skill files, not in prompts.** Skills are reusable; prompts are throwaway.
+3. **Use constraints aggressively.** Telling agents what NOT to do reduces hallucination.
+4. **Separate planning from implementation.** Never let the Implementer define requirements.
+5. **Write tests before implementation.** TDD gives Copilot a concrete target.
+6. **Version your prompts.** Track prompt changes in git and measure regressions.
+7. **Keep context tight.** Pass only the context each agent needs — noise degrades output.
+8. **Run the Security agent before every merge.** OWASP findings are cheaper to fix early.
