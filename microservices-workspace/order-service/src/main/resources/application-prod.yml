@@ -1,0 +1,14 @@
+micronaut:
+  server:
+    port: ${SERVER_PORT:8081}
+
+datasources:
+  default:
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+
+logger:
+  levels:
+    com.example.order: WARN
+    io.micronaut.data: WARN

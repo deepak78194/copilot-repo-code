@@ -1,0 +1,17 @@
+micronaut:
+  server:
+    port: 8083
+
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5432/analytics_db
+    username: analytics_user
+    password: analytics_pass
+  oracle:
+    url: jdbc:oracle:thin:@localhost:1521/XEPDB1
+    username: analytics_oracle_user
+    password: analytics_oracle_pass
+
+logger:
+  levels:
+    com.example.analytics: DEBUG

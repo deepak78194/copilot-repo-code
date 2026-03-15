@@ -1,0 +1,22 @@
+micronaut:
+  application:
+    name: customer-service
+  server:
+    port: 8082
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+
+datasources:
+  default:
+    url: jdbc:oracle:thin:@localhost:1521/XEPDB1
+    username: customer_user
+    password: customer_pass
+    driver-class-name: oracle.jdbc.OracleDriver
+    schema-generate: NONE
+
+logger:
+  levels:
+    com.example.customer: INFO

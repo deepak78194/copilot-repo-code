@@ -1,0 +1,13 @@
+micronaut:
+  server:
+    port: 8082
+
+datasources:
+  default:
+    url: jdbc:oracle:thin:@localhost:1521/XEPDB1
+    username: customer_user
+    password: customer_pass
+
+logger:
+  levels:
+    com.example.customer: DEBUG

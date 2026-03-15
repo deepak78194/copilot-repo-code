@@ -1,0 +1,30 @@
+micronaut:
+  application:
+    name: analytics-service
+  server:
+    port: 8083
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5432/analytics_db
+    username: analytics_user
+    password: analytics_pass
+    driver-class-name: org.postgresql.Driver
+    dialect: POSTGRES
+    schema-generate: NONE
+  oracle:
+    url: jdbc:oracle:thin:@localhost:1521/XEPDB1
+    username: analytics_oracle_user
+    password: analytics_oracle_pass
+    driver-class-name: oracle.jdbc.OracleDriver
+    dialect: ORACLE
+    schema-generate: NONE
+
+logger:
+  levels:
+    com.example.analytics: INFO

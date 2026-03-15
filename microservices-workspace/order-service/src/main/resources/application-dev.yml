@@ -1,0 +1,14 @@
+micronaut:
+  server:
+    port: 8081
+
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5432/orders_db
+    username: orders_user
+    password: orders_pass
+
+logger:
+  levels:
+    com.example.order: DEBUG
+    io.micronaut.data: DEBUG

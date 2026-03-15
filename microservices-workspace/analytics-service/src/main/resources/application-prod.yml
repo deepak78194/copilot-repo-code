@@ -1,0 +1,17 @@
+micronaut:
+  server:
+    port: ${SERVER_PORT:8083}
+
+datasources:
+  default:
+    url: ${PG_DATASOURCE_URL}
+    username: ${PG_DATASOURCE_USERNAME}
+    password: ${PG_DATASOURCE_PASSWORD}
+  oracle:
+    url: ${ORACLE_DATASOURCE_URL}
+    username: ${ORACLE_DATASOURCE_USERNAME}
+    password: ${ORACLE_DATASOURCE_PASSWORD}
+
+logger:
+  levels:
+    com.example.analytics: WARN

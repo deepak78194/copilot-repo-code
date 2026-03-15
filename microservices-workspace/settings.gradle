@@ -1,0 +1,12 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'microservices-workspace'
+
+include 'order-service'
+include 'customer-service'
+include 'analytics-service'
