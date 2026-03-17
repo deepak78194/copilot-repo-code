@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Alex Morgan — Full-Stack Developer & Open Source Enthusiast. Portfolio showcasing projects, skills, and contact information.">
+  <title>Alex Morgan | Full-Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Fira+Code&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#hero">Skip to content</a>
+
+  <!-- Navigation -->
+  <header class="site-header" role="banner">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <a class="nav__logo" href="#hero" aria-label="Home — Alex Morgan">
+        <span class="nav__logo-text" aria-hidden="true">AM</span>
+      </a>
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+        <span class="nav__toggle-icon" aria-hidden="true"></span>
+      </button>
+      <ul class="nav__menu" id="nav-menu" role="list">
+        <li class="nav__item"><a class="nav__link" href="#about">About</a></li>
+        <li class="nav__item"><a class="nav__link" href="#projects">Projects</a></li>
+        <li class="nav__item"><a class="nav__link" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="hero" class="hero" aria-labelledby="hero-heading">
+      <div class="hero__container">
+        <p class="hero__eyebrow">Hello, I'm</p>
+        <h1 class="hero__heading" id="hero-heading">Alex Morgan</h1>
+        <p class="hero__subheading">Full-Stack Developer &amp; Open Source Enthusiast</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#projects">View My Work</a>
+          <a class="btn btn--outline" href="#contact">Get In Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about section" aria-labelledby="about-heading">
+      <div class="about__container container">
+        <div class="about__text">
+          <h2 class="section__heading" id="about-heading">About Me</h2>
+          <p class="about__bio">
+            I'm a full-stack developer with a passion for building performant, accessible, and beautifully designed web applications.
+            I love turning complex problems into simple, elegant solutions and contributing to open source projects that make a difference.
+            When I'm not coding, you'll find me exploring new technologies and sharing what I learn with the community.
+          </p>
+          <ul class="about__skills" role="list" aria-label="Skills">
+            <li class="about__skill-tag">HTML</li>
+            <li class="about__skill-tag">CSS</li>
+            <li class="about__skill-tag">JavaScript</li>
+            <li class="about__skill-tag">React</li>
+            <li class="about__skill-tag">Node.js</li>
+            <li class="about__skill-tag">Python</li>
+            <li class="about__skill-tag">PostgreSQL</li>
+            <li class="about__skill-tag">Git</li>
+          </ul>
+        </div>
+        <div class="about__image">
+          <img
+            class="about__photo"
+            src="https://via.placeholder.com/400x400/1a1a2e/e94560?text=AM"
+            alt="Alex Morgan — profile photo"
+            width="400"
+            height="400"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="projects section" aria-labelledby="projects-heading">
+      <div class="container">
+        <h2 class="section__heading" id="projects-heading">Projects</h2>
+        <ul class="projects__grid" role="list">
+
+          <!-- Project 1 -->
+          <li class="project-card" aria-labelledby="project-1-title">
+            <div class="project-card__image-wrap">
+              <img
+                class="project-card__image"
+                src="https://via.placeholder.com/600x340/0f3460/f8f9fa?text=Task+Flow"
+                alt="Task Flow application screenshot"
+                loading="lazy"
+                width="600"
+                height="340"
+              >
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title" id="project-1-title">Task Flow</h3>
+              <p class="project-card__description">A collaborative task management app with real-time updates, drag-and-drop boards, and team workspace support.</p>
+              <ul class="project-card__tags" role="list" aria-label="Technologies used">
+                <li class="project-card__tag">React</li>
+                <li class="project-card__tag">Node.js</li>
+                <li class="project-card__tag">MongoDB</li>
+                <li class="project-card__tag">Socket.io</li>
+              </ul>
+            </div>
+            <div class="project-card__footer">
+              <a class="btn btn--sm btn--outline" href="#" aria-label="View live demo of Task Flow">Demo</a>
+              <a class="btn btn--sm btn--ghost" href="#" aria-label="View source code for Task Flow">Code</a>
+            </div>
+          </li>
+
+          <!-- Project 2 -->
+          <li class="project-card" aria-labelledby="project-2-title">
+            <div class="project-card__image-wrap">
+              <img
+                class="project-card__image"
+                src="https://via.placeholder.com/600x340/0f3460/f8f9fa?text=Weather+Dash"
+                alt="Weather Dash application screenshot"
+                loading="lazy"
+                width="600"
+                height="340"
+              >
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title" id="project-2-title">Weather Dash</h3>
+              <p class="project-card__description">A clean weather dashboard with 7-day forecasts, interactive maps, and location-based auto-detection.</p>
+              <ul class="project-card__tags" role="list" aria-label="Technologies used">
+                <li class="project-card__tag">JavaScript</li>
+                <li class="project-card__tag">OpenWeather API</li>
+                <li class="project-card__tag">Leaflet.js</li>
+                <li class="project-card__tag">CSS Grid</li>
+              </ul>
+            </div>
+            <div class="project-card__footer">
+              <a class="btn btn--sm btn--outline" href="#" aria-label="View live demo of Weather Dash">Demo</a>
+              <a class="btn btn--sm btn--ghost" href="#" aria-label="View source code for Weather Dash">Code</a>
+            </div>
+          </li>
+
+          <!-- Project 3 -->
+          <li class="project-card" aria-labelledby="project-3-title">
+            <div class="project-card__image-wrap">
+              <img
+                class="project-card__image"
+                src="https://via.placeholder.com/600x340/0f3460/f8f9fa?text=Dev+Portfolio"
+                alt="Developer Portfolio website screenshot"
+                loading="lazy"
+                width="600"
+                height="340"
+              >
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title" id="project-3-title">Dev Portfolio</h3>
+              <p class="project-card__description">This very portfolio — built with semantic HTML, CSS custom properties, and vanilla JS. No frameworks, fully accessible.</p>
+              <ul class="project-card__tags" role="list" aria-label="Technologies used">
+                <li class="project-card__tag">HTML5</li>
+                <li class="project-card__tag">CSS3</li>
+                <li class="project-card__tag">JavaScript</li>
+                <li class="project-card__tag">WCAG AA</li>
+              </ul>
+            </div>
+            <div class="project-card__footer">
+              <a class="btn btn--sm btn--outline" href="#" aria-label="View live demo of Dev Portfolio">Demo</a>
+              <a class="btn btn--sm btn--ghost" href="#" aria-label="View source code for Dev Portfolio">Code</a>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact section" aria-labelledby="contact-heading">
+      <div class="container container--narrow">
+        <h2 class="section__heading" id="contact-heading">Get In Touch</h2>
+        <p class="contact__intro">Have a project in mind or just want to say hi? My inbox is always open.</p>
+        <form class="contact__form" novalidate aria-label="Contact form">
+          <div class="form-group">
+            <label class="form-label" for="contact-name">Full Name</label>
+            <input
+              class="form-input"
+              id="contact-name"
+              type="text"
+              name="name"
+              autocomplete="name"
+              required
+              aria-required="true"
+              aria-describedby="name-error"
+              placeholder="Jane Smith"
+            >
+            <span class="form-error" id="name-error" role="alert" aria-live="polite"></span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-email">Email Address</label>
+            <input
+              class="form-input"
+              id="contact-email"
+              type="email"
+              name="email"
+              autocomplete="email"
+              required
+              aria-required="true"
+              aria-describedby="email-error"
+              placeholder="jane@example.com"
+            >
+            <span class="form-error" id="email-error" role="alert" aria-live="polite"></span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-message">Message</label>
+            <textarea
+              class="form-input form-input--textarea"
+              id="contact-message"
+              name="message"
+              rows="5"
+              required
+              aria-required="true"
+              aria-describedby="message-error"
+              placeholder="Tell me about your project..."
+            ></textarea>
+            <span class="form-error" id="message-error" role="alert" aria-live="polite"></span>
+          </div>
+          <button class="btn btn--primary btn--full" type="submit">Send Message</button>
+        </form>
+        <div class="contact__success" id="contact-success" role="status" aria-live="polite" hidden>
+          <p>&#10003; Thanks for reaching out! I'll get back to you soon.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <nav class="footer__social" aria-label="Social media links">
+        <ul class="footer__social-list" role="list">
+          <li>
+            <a class="footer__social-link" href="https://github.com/" aria-label="GitHub profile" rel="noopener noreferrer" target="_blank">
+              <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a class="footer__social-link" href="https://linkedin.com/in/" aria-label="LinkedIn profile" rel="noopener noreferrer" target="_blank">
+              <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <p class="footer__copy"><small>&copy; <span id="footer-year"></span> Alex Morgan. All rights reserved.</small></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
